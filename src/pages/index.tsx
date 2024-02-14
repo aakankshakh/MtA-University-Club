@@ -1,9 +1,37 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import Menu from "@/components/menu";
+import type {MenuType} from "@/components/menu";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+// Hard coded menu to test the display
+const menu : MenuType = {
+  itemsList: [
+    {name: "Butter Chicken", price: 17, lastServed: new Date(),
+    isGlutenFree: false, isVegan: false, isVegetarian: false,
+    isDairyFree: false
+    },
+    {name: "Shahi Paneer", price: 15, lastServed: new Date(),
+    isGlutenFree: false, isVegan: false, isVegetarian: true,
+    isDairyFree: false
+    }
+  ]
+};
+
+export default function HomePage() {
+
+  return (
+    <main>
+      <Menu isModifiable={false} menu={menu} />
+
+    </main>
+  )
+}
+
+
+
+export function Example() {
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
