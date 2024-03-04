@@ -20,11 +20,11 @@ export default function MenuItem(props: MenuItemProps) {
     const {item, isModifiable} = props;
     return (
     <main>
-        <h3>
+        <h3 className="font-medium indent-10">
             {item.name}
         </h3>
 
-        <h3>
+        <h3 className="italic indent-16">
             Price: ${item.price}
             {/* 
             * only print this if isModifiable! or if we're looking at prev. items
