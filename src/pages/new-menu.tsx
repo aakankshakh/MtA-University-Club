@@ -2,28 +2,60 @@
 // We also want them to be able to access a list of previous meals they've made - a component here would be helpful
 // use isModifiable boolean value to determine 
 // FUTURE TO DO: add different sections for drinks, meal, dessert
+
 export default function newMenuPage(){
+    
     return (
         <main>
             
             <h1 className="font-bold text-center text-5xl">
-                New Menu Creation
+                Add Menu Item
             </h1>
 
-            <label className="block">
-  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-    Email
-  </span>
-  <input type="email" name="email" className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" placeholder="you@example.com" />
-</label>
-
-            <input className="" type="text" placeholder="Menu Item Name"/>
-            
-            <label>
-                <input type="text" placeholder="Menu Item Price"/>
-                
-                </label>
-            
+            <div className="container mx-auto py-8">
+      <form className="max-w-md mx-auto">
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Name</label>
+          <input type="text" id="name" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="description" className="block text-gray-700 font-bold mb-2">Description</label>
+          <textarea id="description" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="price" className="block text-gray-700 font-bold mb-2">Price</label>
+          <input type="text" id="price" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2">Dietary Options</label>
+          <div>
+            <label className="inline-flex items-center">
+              <input type="checkbox" className="form-checkbox text-indigo-600"  />
+              <span className="ml-2">Vegan</span>
+            </label>
+          </div>
+          <div>
+            <label className="inline-flex items-center">
+              <input type="checkbox" className="form-checkbox text-indigo-600"  />
+              <span className="ml-2">Vegetarian</span>
+            </label>
+          </div>
+          <div>
+            <label className="inline-flex items-center">
+              <input type="checkbox" className="form-checkbox text-indigo-600" />
+              <span className="ml-2">Gluten-Free</span>
+            </label>
+          </div>
+          <div>
+            <label className="inline-flex items-center">
+              <input type="checkbox" className="form-checkbox text-indigo-600" />
+              <span className="ml-2">Dairy-Free</span>
+            </label>
+          </div>
+        </div>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Item</button>
+      </form>
+    </div>
 
         </main>
     )

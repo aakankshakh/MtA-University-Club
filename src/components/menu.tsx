@@ -28,6 +28,7 @@ export default function Menu(props: MenuProps) {
             {menu.itemsList.map((item, index) => <MenuItem item={item} isModifiable={isModifiable} key={index}/>) }
             {/*looping through items in itemsList, index helps make sure we are looking at unique items each time*/}
         </div>
+        
     </main>
     )
 } 
