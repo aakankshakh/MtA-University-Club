@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import styles from '@/styles/signUp.module.css'; // Import the module CSS file
 
 export default function SignUp() {
   const [name, setName] = useState('');
@@ -48,9 +47,23 @@ export default function SignUp() {
   };
 
   return (
-    <div className={styles.signUpContainer}>
-      <h2 className={styles.signUpHeader}>Sign Up Page</h2>
-      <form className={styles.signUpForm}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh', // Set height to full viewport height for vertical centering
+      }}
+    >
+      <h2 style={{ marginBottom: '16px' }}>Sign Up Page</h2>
+      <form
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
         <label>
           Name:
           <input
@@ -101,10 +114,31 @@ export default function SignUp() {
           />
         </label>
         <br />
-        <button type="button" onClick={handleSignUp} className={styles.signUpButton}>
+        <button
+          type="button"
+          onClick={handleSignUp}
+          style={{
+            marginTop: '16px',
+            padding: '8px 16px',
+            backgroundColor: '#28a745', // Example background color
+            color: '#fff', // Example text color
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
           Sign Up
         </button>
-        {error && <p className={styles.errorText}>{error}</p>}
+        {error && (
+          <p
+            style={{
+              color: 'red',
+              marginTop: '8px',
+            }}
+          >
+            {error}
+          </p>
+        )}
       </form>
     </div>
   );
