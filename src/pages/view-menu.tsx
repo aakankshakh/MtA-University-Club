@@ -37,7 +37,7 @@ const menu : MenuType = {
 export default function ViewMenuPage() {
     return (
         <main>
-            <Menu isModifiable={false} menu={menu} />
+            <Menu beingOrdered={false} menu={menu} />
         </main>
         
     )

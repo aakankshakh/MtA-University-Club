@@ -1,6 +1,13 @@
-
 import React, { useState } from 'react';
-import styles from '@/styles/signIn.module.css'; // Import the module CSS file
+import { Hamburger } from '@/components/hamburger-menu';
+
+const hamburgerMenuItems = [
+  { label: 'Home', link: '/' },
+  { label: 'View Menu', link: '/view-menu' },
+  { label: 'Sign in', link: '/sign-in' },
+  { label: 'Sign up', link: '/sign-up' },
+  ];
+
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -36,33 +43,46 @@ export default function SignIn() {
   };
 
   return (
-    <div className={styles.signInContainer}>
-      <h2 className={styles.signInHeader}>Sign In Page</h2>
-      <form className={styles.signInForm}>
-        <label>
-          Email:
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <header>
+        {/** should have the hamburger menu icon... */}
+      </header>
+      <h2 className="text-3xl font-bold mb-4">Sign In</h2>
+      <form className="w-full max-w-md">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            Email:
+          </label>
           <input
+            id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </label>
-        <br />
-        <label>
-          Password:
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            Password:
+          </label>
           <input
+            id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </label>
-        <br />
-        <button type="button" onClick={handleSignIn} className={styles.signInButton}>
+        </div>
+        <button
+          type="button"
+          onClick={handleSignIn}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
           Sign In
         </button>
-        {error && <p className={styles.errorText}>{error}</p>}
+        {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
       </form>
     </div>
   );

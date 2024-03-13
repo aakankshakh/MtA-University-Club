@@ -1,6 +1,4 @@
-
 import React, { useState } from 'react';
-import styles from '@/styles/signUp.module.css'; // Import the module CSS file
 
 export default function SignUp() {
   const [name, setName] = useState('');
@@ -48,63 +46,82 @@ export default function SignUp() {
   };
 
   return (
-    <div className={styles.signUpContainer}>
-      <h2 className={styles.signUpHeader}>Sign Up Page</h2>
-      <form className={styles.signUpForm}>
-        <label>
-          Name:
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h2 className="text-3xl font-bold mb-4">Sign Up Page</h2>
+      <form className="w-full max-w-md">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+            Name:
+          </label>
           <input
+            id="name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </label>
-        <br />
-        <label>
-          Email:
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            Email:
+          </label>
           <input
+            id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </label>
-        <br />
-        <label>
-          Confirm Email:
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmEmail">
+            Confirm Email:
+          </label>
           <input
+            id="confirmEmail"
             type="email"
             value={confirmEmail}
             onChange={(e) => setConfirmEmail(e.target.value)}
             placeholder="Confirm your email"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </label>
-        <br />
-        <label>
-          Password:
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            Password:
+          </label>
           <input
+            id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </label>
-        <br />
-        <label>
-          Confirm Password:
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">
+            Confirm Password:
+          </label>
           <input
+            id="confirmPassword"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder="Confirm your password"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </label>
-        <br />
-        <button type="button" onClick={handleSignUp} className={styles.signUpButton}>
+        </div>
+        <button
+          type="button"
+          onClick={handleSignUp}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
           Sign Up
         </button>
-        {error && <p className={styles.errorText}>{error}</p>}
+        {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
       </form>
     </div>
   );

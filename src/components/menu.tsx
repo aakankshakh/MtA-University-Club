@@ -1,5 +1,6 @@
-import type {MenuItemType} from "./item";
-import MenuItem from "./item";
+import type {MenuItemType} from "./menu-item";
+import MenuItem from "./menu-item";
+import MenuLegend from "./menu-legend";
 
 export type MenuType = {
     itemsList: MenuItemType[];
@@ -9,12 +10,12 @@ export type MenuType = {
 // Giving multiple pages the ability to access it
 type MenuProps = {
     menu: MenuType;
-    isModifiable: boolean;
+    beingOrdered: boolean;
 }
 
 export default function Menu(props: MenuProps) {
     // Creating local variables to store props
-    const {menu, isModifiable} = props;
+    const {menu, beingOrdered} = props;
     const today = new Date();
     return (
     <main>
@@ -25,10 +26,13 @@ export default function Menu(props: MenuProps) {
             {today.toLocaleDateString()}
         </h3>
         <div>
-            {menu.itemsList.map((item, index) => <MenuItem item={item} isModifiable={isModifiable} key={index}/>) }
+            {menu.itemsList.map((item, index) => <MenuItem item={item} beingOrdered={beingOrdered} key={index}/>) }
             {/*looping through items in itemsList, index helps make sure we are looking at unique items each time*/}
         </div>
         
+        <footer>
+            <MenuLegend/>
+        </footer>
     </main>
     )
 } 
