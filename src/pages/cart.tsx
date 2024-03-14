@@ -12,16 +12,14 @@ export default function CartPage({ cart, onRemove, onClose }: Props) {
     };
 
     const checkout = () => {
-        //will implement checkout logic here
+        // Implement checkout logic here
         console.log('Checkout clicked!');
     };
 
     return (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white rounded-lg shadow-md p-6 w-1/2">
-                <div className="flex justify-end">
-                    <button className="text-gray-500 hover:text-gray-700" onClick={onClose}>Close</button>
-                </div>
+            <div className="bg-white rounded-lg shadow-md p-6 max-h-[calc(100vh-100px)] overflow-y-auto w-1/2 relative">
+                <button className="absolute top-0 right-0 m-4 text-gray-500 hover:text-gray-700" onClick={onClose}>Close</button>
                 <h1 className="font-bold text-center text-5xl mb-6">Your Cart</h1>
                 <div className="container mx-auto">
                     {cart.map((item, index) => (
