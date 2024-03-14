@@ -12,7 +12,7 @@ export default function CartPage({ cart, onRemove, onClose }: Props) {
     };
 
     const checkout = () => {
-        // Implement checkout logic here
+        //I will implement the checkout logic later
         console.log('Checkout clicked!');
     };
 
