@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { MenuItemType } from '@/components/menu-item';
-import CartPage from './cart';
+import CartPage from '../components/cart';
 
 export default function OrderItemPage() {
     const [cart, setCart] = useState<MenuItemType[]>([]);
