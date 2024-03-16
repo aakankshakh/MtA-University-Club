@@ -1,12 +1,6 @@
-import ViewMenuPage from "@/pages/view-menu"
-import Link from "next/link"
-import food from "@/food.png"
-
-const handleMenuClick = () => {
-  return (
-    <ViewMenuPage/>
-  )
-}
+import ViewMenuPage from "@/pages/view-menu";
+import Link from "next/link";
+import food from "@/food.png";
 
 export function NewWelcome() {
   return (
@@ -21,7 +15,7 @@ export function NewWelcome() {
             />
             <div className="hidden sm:mt-32 sm:flex lg:mt-16">
               <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                Anim aute id magna aliqua ad ad non deserunt sunt.{' '}
+                Anim aute id magna aliqua ad ad non deserunt sunt.{" "}
                 <a href="#" className="whitespace-nowrap font-semibold text-indigo-600">
                   <span className="absolute inset-0" aria-hidden="true" />
                   Read more <span aria-hidden="true">&rarr;</span>
@@ -50,51 +44,38 @@ export function NewWelcome() {
         </div>
         <div className="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
           <img
-            src={require('../food.png')}
+            src={require("../food.png")}
             className="aspect-[3/2] w-full bg-gray-50 object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
             alt="Collage of images of food made at the University Club"
           />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default function Welcome(){
-    return (
-        <main>
+export default function Welcome() {
+  return (
+    <main>
       <div className="flex justify-between p-4 text-white font-medium">
         <Link href={"/view-menu"}>
-        <button className="px-4 py-2 bg-blue-500 rounded-full">
-          View Menu
-        </button>
+          <button className="px-4 py-2 bg-blue-500 rounded-full">View Menu</button>
         </Link>
         <div className="space-x-4">
           <Link href={"/sign-in"}>
-          <button className="px-4 py-2 bg-green-500  rounded-full">
-            Sign In
-          </button>
+            <button className="px-4 py-2 bg-green-500  rounded-full">Sign In</button>
           </Link>
-          <Link href={"\sign-up"}>
-          <button className="px-4 py-2 bg-red-500 rounded-full">
-            Sign Up
-          </button>
-          </Link>
-          <Link href="guest">
-          <button className="px-4 py-2 bg-gray-500 rounded-full" >
-            Continue as Guest
-          </button>
+          <Link href={"/sign-up"}>
+            <button className="px-4 py-2 bg-red-500 rounded-full">Sign Up</button>
           </Link>
         </div>
       </div>
       <div className="text-center my-8">
         <h1 className="text-4xl font-semibold mb-4">Welcome to Our Club!</h1>
-        <p className="text-lg text-gray-700">
-          Welcome to our club app where you can order delicious meals
-
-        </p>
+        <p className="text-lg text-gray-700">Welcome to our club app where you can order delicious meals</p>
       </div>
       {/* Menu component can be added here */}
     </main>
-    )
+  );
 }
+

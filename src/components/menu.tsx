@@ -11,6 +11,7 @@ export type MenuType = {
 type MenuProps = {
     menu: MenuType;
     beingOrdered: boolean;
+    //addToCart: (item: MenuItemType) => void; // Add this line
 }
 
 export default function Menu(props: MenuProps) {
