@@ -52,7 +52,7 @@ export default function PageHeader(props: HeaderProps) {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12 text-gray-900 dark:text-white">
           {headerItems.map((headerItem, index) => 
-                <DisplayPage headerItem={headerItem} className="text-sm font-semibold leading-6"/>)}
+                <DisplayPage headerItem={headerItem} className="text-sm font-semibold leading-6" key={index}/>)}
         
         </Popover.Group>
          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -87,7 +87,7 @@ export default function PageHeader(props: HeaderProps) {
               <div className="space-y-2 py-6">
 
                 {headerItems.map((headerItem, index) => 
-                <DisplayPage headerItem={headerItem} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50"/>)}
+                <DisplayPage headerItem={headerItem} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50" key={index}/>)}
         
             
               </div>

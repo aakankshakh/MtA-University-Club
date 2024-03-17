@@ -3,11 +3,20 @@
 // use isModifiable boolean value to determine 
 // FUTURE TO DO: add different sections for drinks, meal, dessert
 
+import PageHeader, { HeaderItem } from "@/components/page-header";
+
+const headerItems : HeaderItem[] =
+  [{pageName: "Home", pageLink: "/"}, {pageName: "View Menu", pageLink: "/view-menu"}];
+
+const callToAction : HeaderItem =
+  {pageName: "Sign up", pageLink: "/sign-up"};
+
+
 export default function newMenuPage(){
     
     return (
         <main>
-            
+            <PageHeader headerItems={headerItems} callToAction={callToAction}/>
             <h1 className="font-bold text-center text-5xl">
                 Add Menu Item
             </h1>
