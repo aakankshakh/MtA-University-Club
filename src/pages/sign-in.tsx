@@ -1,12 +1,12 @@
+import PageHeader, { HeaderItem } from '@/components/page-header';
 import React, { useState } from 'react';
-import { Hamburger } from '@/components/hamburger-menu';
 
-const hamburgerMenuItems = [
-  { label: 'Home', link: '/' },
-  { label: 'View Menu', link: '/view-menu' },
-  { label: 'Sign in', link: '/sign-in' },
-  { label: 'Sign up', link: '/sign-up' },
-  ];
+
+const headerItems : HeaderItem[] =
+  [{pageName: "Home", pageLink: "/"}, {pageName: "View Menu", pageLink: "/view-menu"}];
+
+const callToAction : HeaderItem =
+  {pageName: "Sign up", pageLink: "/sign-up"};
 
 
 export default function SignIn() {
@@ -43,6 +43,8 @@ export default function SignIn() {
   };
 
   return (
+    <div>
+      <PageHeader headerItems={headerItems} callToAction={callToAction}/>
     <div className="flex flex-col items-center justify-center min-h-screen">
       <header>
         {/** should have the hamburger menu icon... */}
@@ -84,6 +86,7 @@ export default function SignIn() {
         </button>
         {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
       </form>
+    </div>
     </div>
   );
 }

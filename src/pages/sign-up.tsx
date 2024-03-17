@@ -1,4 +1,12 @@
+import PageHeader, { HeaderItem } from '@/components/page-header';
 import React, { useState } from 'react';
+
+const headerItems : HeaderItem[] =
+  [{pageName: "Home", pageLink: "/"}, {pageName: "View Menu", pageLink: "/view-menu"}];
+
+const callToAction : HeaderItem =
+  {pageName: "Sign in", pageLink: "/sign-in"};
+
 
 export default function SignUp() {
   const [name, setName] = useState('');
@@ -46,8 +54,10 @@ export default function SignUp() {
   };
 
   return (
+    <div>
+      <PageHeader headerItems={headerItems} callToAction={callToAction}/>
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <h2 className="text-3xl font-bold mb-4">Sign Up Page</h2>
+      <h2 className="text-3xl font-bold mb-4">Sign Up</h2>
       <form className="w-full max-w-md">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -123,6 +133,7 @@ export default function SignUp() {
         </button>
         {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
       </form>
+    </div>
     </div>
   );
 }

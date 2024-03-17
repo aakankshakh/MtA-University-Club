@@ -1,4 +1,5 @@
 import Menu, { MenuType } from "@/components/menu";
+import PageHeader, { HeaderItem } from "@/components/page-header";
 
 // Hard coded menu to test the display
 const menu : MenuType = {
@@ -34,9 +35,16 @@ const menu : MenuType = {
   ]
 };
 
+const headerItems : HeaderItem[] =
+  [{pageName: "Home", pageLink: "/"}, {pageName: "Sign up", pageLink: "/sign-up"}];
+
+const callToAction : HeaderItem =
+  {pageName: "Sign in", pageLink: "/sign-in"};
+
 export default function ViewMenuPage() {
     return (
         <main>
+            <PageHeader headerItems={headerItems} callToAction={callToAction}/>
             <Menu beingOrdered={false} menu={menu} />
         </main>
         
