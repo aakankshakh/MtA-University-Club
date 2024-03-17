@@ -9,8 +9,8 @@ export function NewWelcome() {
         <div className="px-6 pb-24 pt-10 sm:pb-32 lg:col-span-7 lg:px-0 lg:pb-56 lg:pt-48 xl:col-span-6">
           <div className="mx-auto max-w-2xl lg:mx-0">
             <img
-              className="h-11"
-              src="https://tailwindui.com/img/logos/mark.svg?color=red&shade=800"
+              className="h-20"
+              src="mta-logo.png"
               alt="Collage of meals made at the Mount Allison University Club"
             />
             <div className="hidden sm:mt-32 sm:flex lg:mt-16">
