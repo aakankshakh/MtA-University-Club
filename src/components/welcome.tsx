@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-export function NewWelcome() {
+export default function Welcome() {
   return (
     <div className="relative bg-white dark:bg-black">
       <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
         <div className="px-6 pb-24 pt-10 sm:pb-32 lg:col-span-7 lg:px-0 lg:pb-56 lg:pt-48 xl:col-span-6">
           <div className="mx-auto max-w-2xl lg:mx-0">
             <img
-              className="h-20"
+              className="h-20 bg-white rounded-full"
               src="mta-logo.png"
               alt="Collage of meals made at the Mount Allison University Club"
             />
@@ -52,7 +52,7 @@ export function NewWelcome() {
   );
 }
 
-export default function Welcome() {
+export function OldWelcome() {
   return (
     <main>
       <div className="flex justify-between p-4 text-white font-medium">
