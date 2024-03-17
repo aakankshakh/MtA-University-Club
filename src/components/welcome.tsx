@@ -1,6 +1,4 @@
-import ViewMenuPage from "@/pages/view-menu";
 import Link from "next/link";
-import food from "@/food.png";
 
 export function NewWelcome() {
   return (
@@ -16,10 +14,10 @@ export function NewWelcome() {
             <div className="hidden sm:mt-32 sm:flex lg:mt-16">
               <div className="relative rounded-full px-3 py-1 text-m leading-6 text-gray-500 dark:text-gray-200 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                 Want to order some delicious meals?{" "}
-                <a href="/sign-up" className="whitespace-nowrap font-semibold text-red-700 hover:text-red-600">
+                <Link href="/sign-up" className="whitespace-nowrap font-semibold text-red-700 hover:text-red-600">
                   <span className="absolute inset-0" aria-hidden="true" />
                   Sign up now! <span aria-hidden="true">&rarr;</span>
-                </a>
+                </Link>
               </div>
             </div>
             <h1 className="mt-24 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:mt-10 sm:text-6xl">
@@ -30,15 +28,15 @@ export function NewWelcome() {
               located in the heart of campus.
             </p>
             <div className="mt-10 flex items-center gap-x-6">
-              <a
+              <Link
                 href="/view-menu"
                 className="rounded-md bg-red-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-900"
               >
                 View Menu
-              </a>
-              <a href="/sign-in" className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 rounded-md hover:bg-amber-400 dark:hover:bg-amber-700 px-3.5 py-2.5 ">
+              </Link>
+              <Link href="/sign-in" className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 rounded-md hover:bg-amber-400 dark:hover:bg-amber-700 px-3.5 py-2.5 ">
                 Sign in <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
