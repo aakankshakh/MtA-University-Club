@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Menu from "@/components/menu";
@@ -14,4 +15,3 @@ export default function HomePage() {
     </main>
   )
 }
-
