@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MenuItemType } from '@/components/menu-item';
-import CheckoutPage from '@/components/CheckoutPage';
-import ThankYouPage from '@/pages/ThankyouPage';
+import CheckoutPage from '@/components/checkout';
+import ThankYouPage from '@/pages/thankyou-page';
 
 interface Props {
     cart: MenuItemType[];
