@@ -3,6 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { MenuItemType } from '@/components/menu-item';
 import CartPage from '@/components/cart';
+import PageHeader, { HeaderItem } from '@/components/page-header';
+
+const headerItems : HeaderItem[] =
+  [{pageName: "Home", pageLink: "/"}, {pageName: "View Menu", pageLink: "/view-menu"}];
+
+const callToAction : HeaderItem =
+  {pageName: "Sign up", pageLink: "/sign-up"};
+
+
 
 export default function OrderItemPage() {
     const [cart, setCart] = useState<MenuItemType[]>([]);
@@ -49,6 +58,7 @@ export default function OrderItemPage() {
 
     return (
         <main className="dark:bg-gray-800">
+            <PageHeader headerItems={headerItems} callToAction={callToAction}/>
             <div className="flex items-center justify-between bg-gray-200 dark:bg-gray-700 px-4 py-2 mb-4">
                 <h1 className="font-bold text-xl">Order Items</h1>
                 <div className="flex items-center">
