@@ -12,6 +12,7 @@ const CheckoutPage: React.FC<Props> = ({ onClose, cartItems, total, clearCartAnd
     const [orderType, setOrderType] = useState<string>('');
     const [isProcessing, setIsProcessing] = useState<boolean>(false);
     const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
+    const [specifications, setSpecifications] = useState<string>('');
 
     const handlePlaceOrder = () => {
         setIsProcessing(true);
@@ -47,11 +48,15 @@ const CheckoutPage: React.FC<Props> = ({ onClose, cartItems, total, clearCartAnd
                 </div>
                 <div className="flex flex-col mb-4">
                     <label htmlFor="orderType" className="font-bold mb-2">Order Type:</label>
-                    <select id="orderType" className="border border-gray-300 dark:border-gray-600 rounded-md px-4 py-2" value={orderType} onChange={(e) => setOrderType(e.target.value)}>
+                    <select id="orderType" className="border border-gray-300 dark:border-gray-600 rounded-md px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" value={orderType} onChange={(e) => setOrderType(e.target.value)}>
                         <option value="">Select</option>
                         <option value="takeout">Takeout</option>
                         <option value="eatIn">Eat-in</option>
                     </select>
+                </div>
+                <div className="flex flex-col mb-4">
+                    <label htmlFor="specifications" className="font-bold mb-2">Specifications for the Chef:</label>
+                    <textarea id="specifications" className="border border-gray-300 dark:border-gray-600 rounded-md px-4 py-2 resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white" value={specifications} onChange={(e) => setSpecifications(e.target.value)} placeholder="Write specifications for the chef..."></textarea>
                 </div>
                 {isProcessing ? (
                     <p className="text-blue-500 font-bold">Processing order...</p>
@@ -66,5 +71,3 @@ const CheckoutPage: React.FC<Props> = ({ onClose, cartItems, total, clearCartAnd
 };
 
 export default CheckoutPage;
-
-
