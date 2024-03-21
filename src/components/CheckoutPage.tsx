@@ -45,7 +45,6 @@ const CheckoutPage: React.FC<Props> = ({ onClose, cartItems, total, clearCartAnd
                     <p className="font-bold">Total:</p>
                     <p className="font-bold">${total}</p>
                 </div>
-                <h2 className="font-bold text-xl my-4">Questions</h2>
                 <div className="flex flex-col mb-4">
                     <label htmlFor="orderType" className="font-bold mb-2">Order Type:</label>
                     <select id="orderType" className="border border-gray-300 dark:border-gray-600 rounded-md px-4 py-2" value={orderType} onChange={(e) => setOrderType(e.target.value)}>
