@@ -76,3 +76,4 @@ const CheckoutPage: React.FC<Props> = ({ onClose, cartItems, total, clearCartAnd
 };
 
 export default CheckoutPage;
+

@@ -99,3 +99,4 @@ export default function CartPage({ cart, onClose, updateCart }: Props) {
         </div>
     );
 }
+
