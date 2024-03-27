@@ -91,7 +91,11 @@ export default function CartPage({ cart, onClose, updateCart }: Props) {
                             </div>
                         ))}
                         <div className="font-bold text-xl mb-4 text-gray-900 dark:text-white">Total Price: ${calculateTotalPrice()}</div>
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-md" onClick={handleCheckout}>Checkout</button>
+                        <button
+                        className="rounded-md bg-red-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-900"
+                        onClick={handleCheckout}>
+                            Checkout
+                        </button>
                     </div>
                 </div>
             ) : (

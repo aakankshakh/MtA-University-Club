@@ -63,7 +63,7 @@ const CheckoutPage: React.FC<Props> = ({ onClose, cartItems, total, clearCartAnd
                 ) : orderPlaced ? (
                     <p className="text-green-500 font-bold">Thank you for your order</p>
                 ) : (
-                    <button className={`bg-blue-500 text-white px-4 py-2 rounded-md ${!isOrderTypeSelected() && 'opacity-50 cursor-not-allowed'}`} onClick={handlePlaceOrder} disabled={!isOrderTypeSelected()}>Place Order</button>
+                    <button className={`rounded-md bg-red-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-900 ${!isOrderTypeSelected() && 'opacity-50 cursor-not-allowed'}`} onClick={handlePlaceOrder} disabled={!isOrderTypeSelected()}>Place Order</button>
                 )}
             </div>
         </div>

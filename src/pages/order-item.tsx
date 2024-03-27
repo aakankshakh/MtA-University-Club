@@ -57,10 +57,10 @@ export default function OrderItemPage() {
     ];    
 
     return (
-        <main className="dark:bg-gray-800">
+        <main className="bg-white dark:bg-gray-800">
             <PageHeader headerItems={headerItems} callToAction={callToAction}/>
             <div className="flex items-center justify-between bg-gray-200 dark:bg-gray-700 px-4 py-2 mb-4">
-                <h1 className="font-bold text-xl">Order Items</h1>
+                <h1 className="font-bold text-xl">Order Food</h1>
                 <div className="flex items-center">
                     <FontAwesomeIcon icon={faShoppingCart} className="text-gray-600 dark:text-white mr-2 cursor-pointer" onClick={toggleCartModal} />
                     <span>{cart.length}</span>
@@ -76,7 +76,7 @@ export default function OrderItemPage() {
                         <div>
                             {addedMessage[item.name] && <p className="text-gray-500">{addedMessage[item.name]}</p>}
                             <button
-                                className="px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded"
+                                className="rounded-md bg-red-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-900"
                                 onClick={() => addToCart(item)}
                             >
                                 {addedMessage[item.name] ? 'Added' : 'Add to Order'}
