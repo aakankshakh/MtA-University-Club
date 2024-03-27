@@ -19,7 +19,7 @@ export default function Menu(props: MenuProps) {
     const {menu, beingOrdered} = props;
     const today = new Date();
     return (
-    <main>
+    <main className="bg-white dark:bg-gray-900">
         <h1 className ="font-bold text-5xl text-center">
             University Club Menu
         </h1>

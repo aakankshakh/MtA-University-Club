@@ -56,11 +56,11 @@ export default function SignUp() {
   return (
     <div>
       <PageHeader headerItems={headerItems} callToAction={callToAction}/>
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="bg-white dark:bg-gray-900 flex flex-col items-center justify-center min-h-screen">
       <h2 className="text-3xl font-bold mb-4">Sign Up</h2>
       <form className="w-full max-w-md">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+          <label className="block text-gray-900 dark:text-gray-200 text-sm font-bold mb-2" htmlFor="name">
             Name:
           </label>
           <input
@@ -73,7 +73,7 @@ export default function SignUp() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label className="block text-gray-900 dark:text-gray-200 text-sm font-bold mb-2" htmlFor="email">
             Email:
           </label>
           <input
@@ -86,7 +86,7 @@ export default function SignUp() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmEmail">
+          <label className="block text-gray-900 dark:text-gray-200 text-sm font-bold mb-2" htmlFor="confirmEmail">
             Confirm Email:
           </label>
           <input
@@ -99,7 +99,7 @@ export default function SignUp() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label className="block text-gray-900 dark:text-gray-200 text-sm font-bold mb-2" htmlFor="password">
             Password:
           </label>
           <input
@@ -112,7 +112,7 @@ export default function SignUp() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">
+          <label className="block text-gray-900 dark:text-gray-200 text-sm font-bold mb-2" htmlFor="confirmPassword">
             Confirm Password:
           </label>
           <input
