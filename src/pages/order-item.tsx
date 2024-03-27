@@ -61,14 +61,11 @@ export default function OrderItemPage() {
     ];    
 
     return (
+    
         <main className="bg-white dark:bg-gray-800">
-            <PageHeader headerItems={headerItems} callToAction={callToAction}/>
-            <div className="flex items-center justify-between bg-gray-200 dark:bg-gray-700 px-4 py-2 mb-4">
-                <h1 className="font-bold text-xl">Order Food</h1>
-        <main className="dark:bg-gray-800">
             <PageHeader headerItems={headerItems} callToAction={callToAction} />
-            <div className="sticky top-0 bg-white dark:bg-gray-700 px-4 py-2 mb-4 z-10 flex justify-between items-center">
-                <h1 className="font-bold text-xl">Order Items</h1>
+            <div className="sticky top-0 bg-gray-200 dark:bg-gray-700 px-4 py-2 mb-4 z-10 flex justify-between items-center">
+                <h1 className="font-bold text-xl">Order Food</h1>
                 <div className="flex items-center">
                     <span>{cart.reduce((total, item) => total + item.quantity, 0)}</span>
                     <FontAwesomeIcon icon={faShoppingCart} className="text-gray-600 dark:text-white ml-2 cursor-pointer" onClick={toggleCartModal} />
