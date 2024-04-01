@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MenuItemType } from '@/components/menu-item';
 import CheckoutPage from '@/components/checkout';
 import ThankYouPage from '@/pages/thankyou-page';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 interface MenuItemTypeWithQuantity extends MenuItemType {
     quantity: number;
@@ -17,6 +18,12 @@ export default function CartPage({ cart, onClose, updateCart }: Props) {
     const [cartItems, setCartItems] = useState<MenuItemTypeWithQuantity[]>(cart);
     const [showCheckout, setShowCheckout] = useState(false);
     const [orderPlaced, setOrderPlaced] = useState(false);
+   
+
+    const handleCloseCheckoutModal = () => {
+        setShowCheckout(false);
+    };
+
 
     const calculateTotalPrice = () => {
         return cartItems.reduce((total, cartItem) => total + cartItem.price * cartItem.quantity, 0);
@@ -62,11 +69,9 @@ export default function CartPage({ cart, onClose, updateCart }: Props) {
         setCartItems([]);
         updateCart([]);
         setOrderPlaced(true);
+        setShowCheckout(false);
     };
 
-    const handleClose = () => {
-                onClose();
-            };
 
     return (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 dark:bg-gray-900 bg-opacity-50 flex justify-center items-center">
@@ -95,7 +100,8 @@ export default function CartPage({ cart, onClose, updateCart }: Props) {
             ) : (
                 <ThankYouPage onClose={onClose} />
             )}
-            {showCheckout && <CheckoutPage onClose={handleClose} cartItems={cartItems} total={calculateTotalPrice()} clearCartAndCloseModal={clearCartAndCloseModal} />}
+            {showCheckout && <CheckoutPage onClose={handleCloseCheckoutModal} cartItems={cartItems} total={calculateTotalPrice()} clearCartAndCloseModal={clearCartAndCloseModal}/>}
+
         </div>
     );
 }
