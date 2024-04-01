@@ -46,7 +46,7 @@ export default function SignIn() {
   return (
     <div>
       <PageHeader headerItems={headerItems} callToAction={callToAction}/>
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="bg-white dark:bg-gray-900 flex flex-col items-center justify-center min-h-screen">
       <header>
         {/** should have the hamburger menu icon... */}
       </header>

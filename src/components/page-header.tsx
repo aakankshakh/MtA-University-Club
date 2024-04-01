@@ -38,7 +38,7 @@ export default function PageHeader(props: HeaderProps) {
   const {headerItems, callToAction} = props;
 
   return (
-    <header className="bg-white dark:bg-black">
+    <header className="bg-white dark:bg-gray-900">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:hidden">
           <button
