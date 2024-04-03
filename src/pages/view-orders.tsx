@@ -1,21 +1,35 @@
-import Orders, { OrdersType } from "@/components/orders"
+import Orders, { OrdersType } from "@/components/orders";
 
-const orders : OrdersType = {
-  ordersList : [
-    {id: 1,
-    customer: 'Aakanksha',
-    items: [{name: "Butter Chicken", price: 17.00, description: "yummy food! chicken, butter, cream, ...", lastServed: new Date(),
-    isGlutenFree: false, isVegan: false, isVegetarian: false,
-    isDairyFree: false}],
-    totalPrice: 17.00}
-  ]
-}
+const orders: OrdersType = {
+  ordersList: [
+    {
+      id: "1",
+      createdAt: new Date(),
+      customer: "Aakanksha",
+      items: [
+        {
+          id: "1",
+          name: "Butter Chicken",
+          price: 17.0,
+          description: "yummy food! chicken, butter, cream, ...",
+          lastServed: new Date(),
+          isGlutenFree: false,
+          isVegan: false,
+          isVegetarian: false,
+          isDairyFree: false,
+        },
+      ],
+      totalPrice: 17.0,
+      status: "placed",
+    },
+  ],
+};
 export default function ViewOrders() {
-    return (
-        <div className="container mx-auto py-8">
+  return (
+    <div className="container mx-auto py-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Orders orders={orders}/>
+        <Orders orders={orders} />
       </div>
     </div>
-    );
+  );
 }

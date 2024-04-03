@@ -1,45 +1,47 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
+import { Fragment, useState } from "react";
+import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
-  Bars3Icon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+  ChevronDownIcon,
+  PhoneIcon,
+  PlayCircleIcon,
+} from "@heroicons/react/20/solid";
 import Link from "next/link";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export type HeaderItem = {
-    pageName: string;
-    pageLink: string;
-}
+  pageName: string;
+  pageLink: string;
+};
 
 type displayPageProps = {
   headerItem: HeaderItem;
   className: string;
-}
+};
 
 type HeaderProps = {
-    headerItems: HeaderItem[];
-    callToAction: HeaderItem; // has an arrow beside it e.g., log in or order now
-}
+  headerItems: HeaderItem[];
+};
 
 function DisplayPage(props: displayPageProps) {
-    const {headerItem, className } = props;
-    return (
-        <Link href={headerItem.pageLink} className={className}>
-            {headerItem.pageName}
-        </Link>
-
-    )
+  const { headerItem, className } = props;
+  return (
+    <Link href={headerItem.pageLink} className={className}>
+      {headerItem.pageName}
+    </Link>
+  );
 }
-
 
 export default function PageHeader(props: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const {headerItems, callToAction} = props;
+  const { headerItems } = props;
 
   return (
     <header className="bg-white dark:bg-gray-900">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        aria-label="Global"
+      >
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -51,17 +53,30 @@ export default function PageHeader(props: HeaderProps) {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12 text-gray-900 dark:text-white">
-          {headerItems.map((headerItem, index) => 
-                <DisplayPage headerItem={headerItem} className="text-sm font-semibold leading-6" key={index}/>)}
-        
+          {headerItems.map((headerItem, index) => (
+            <DisplayPage
+              headerItem={headerItem}
+              className="text-sm font-semibold leading-6"
+              key={index}
+            />
+          ))}
         </Popover.Group>
-         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link href={callToAction.pageLink} className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
-            {callToAction.pageName} <span aria-hidden="true">&rarr;</span>
-          </Link>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
         </div>
       </nav>
-      <Dialog as="div" className="lg:hidden " open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+      <Dialog
+        as="div"
+        className="lg:hidden "
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+      >
         <div className="fixed inset-0 z-10 " />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white dark:bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between ">
@@ -85,26 +100,29 @@ export default function PageHeader(props: HeaderProps) {
           <div className="mt-6 flow-root ">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-
-                {headerItems.map((headerItem, index) => 
-                <DisplayPage headerItem={headerItem} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50" key={index}/>)}
-        
-            
+                {headerItems.map((headerItem, index) => (
+                  <DisplayPage
+                    headerItem={headerItem}
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50"
+                    key={index}
+                  />
+                ))}
               </div>
               <div className="py-6">
-                <Link
-                  href={callToAction.pageLink}
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50"
-                >
-                  {callToAction.pageName} <span aria-hidden="true">&rarr;</span>
-                </Link>
+                <SignedOut>
+                  <SignInButton />
+                </SignedOut>
+
+                <SignedIn>
+                  <UserButton afterSignOutUrl="/"/>
+                </SignedIn>
               </div>
             </div>
           </div>
         </Dialog.Panel>
       </Dialog>
     </header>
-  )
+  );
 }
 
 export function Example() {
@@ -113,11 +131,18 @@ export function Example() {
 
   return (
     <header className="bg-white dark:bg-black">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        aria-label="Global"
+      >
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Mount Allison University Club</span>
-            <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+            <img
+              className="h-8 w-auto"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              alt=""
+            />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -134,7 +159,10 @@ export function Example() {
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
               Product
-              <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+              <ChevronDownIcon
+                className="h-5 w-5 flex-none text-gray-400"
+                aria-hidden="true"
+              />
             </Popover.Button>
 
             <Transition
@@ -147,12 +175,8 @@ export function Example() {
               leaveTo="opacity-0 translate-y-1"
             >
               <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                <div className="p-4">
-                  
-                </div>
-                <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                  
-                </div>
+                <div className="p-4"></div>
+                <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50"></div>
               </Popover.Panel>
             </Transition>
           </Popover>
@@ -173,7 +197,12 @@ export function Example() {
           </a>
         </div>
       </nav>
-      <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+      <Dialog
+        as="div"
+        className="lg:hidden"
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+      >
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
@@ -200,9 +229,7 @@ export function Example() {
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
-                      <Disclosure.Panel className="mt-2 space-y-2">
-                      
-                      </Disclosure.Panel>
+                      <Disclosure.Panel className="mt-2 space-y-2"></Disclosure.Panel>
                     </>
                   )}
                 </Disclosure>
@@ -238,5 +265,5 @@ export function Example() {
         </Dialog.Panel>
       </Dialog>
     </header>
-  )
+  );
 }
