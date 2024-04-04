@@ -1,5 +1,5 @@
+import { MenuItemType } from '@/lib/types';
 import React, { useState } from 'react';
-import { MenuItemType } from '@/components/menu-item';
 
 interface Props {
   onClose: () => void;

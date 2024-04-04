@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { MenuItemType } from '@/components/menu-item';
 import CheckoutPage from '@/components/checkout';
 import ThankYouPage from '@/pages/thankyou-page';
-import { faL } from '@fortawesome/free-solid-svg-icons';
+import { MenuItemType } from '@/lib/types';
+
 
 interface MenuItemTypeWithQuantity extends MenuItemType {
   quantity: number;
