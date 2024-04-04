@@ -10,7 +10,9 @@ type MenuProps = {
   //addToCart: (item: MenuItemType) => void; // Add this line
 };
 
-function isCreateMenuType(menu: CreateMenuType | MenuType): menu is CreateMenuType {
+function isCreateMenuType(
+  menu: CreateMenuType | MenuType,
+): menu is CreateMenuType {
   return (menu as CreateMenuType).itemIDs !== undefined;
 }
 
@@ -22,13 +24,12 @@ export default function Menu(props: MenuProps) {
   useEffect(() => {
     if (isCreateMenuType(menu)) {
       menu.itemIDs.map((itemID) => {
-        fetch("/api/get-item").then((res) => res.json()).then((data) => console.log(data));
-      }
-      )
-      
+        fetch("/api/get-item")
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+      });
     }
-  },
-  [menu]);
+  }, [menu]);
   return (
     <main className="bg-white dark:bg-gray-900">
       <h1 className="font-bold text-5xl text-center">University Club Menu</h1>

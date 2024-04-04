@@ -31,9 +31,8 @@ export type UpdateMenuItemType = {
   isDairyFree?: boolean;
 };
 
-
 export type MenuType = {
-  id:string;
+  id: string;
   items: MenuItemType[];
   createdAt: Date;
 };
@@ -53,7 +52,7 @@ export type OrderType = {
   items: MenuItemType[];
   totalPrice: number;
   status: "placed" | "fulfilled";
-}
+};
 
 export type CreateOrderType = {
   customer: string;

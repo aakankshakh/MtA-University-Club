@@ -10,7 +10,7 @@ const signedInHeaderItems: HeaderItem[] = [
   { pageName: "Place Order", pageLink: "/order" },
 ];
 
-export default  function Header() {
+export default function Header() {
   const { isSignedIn, user, isLoaded } = useUser();
   const headerItems = isSignedIn ? signedInHeaderItems : signedOutHeaderItems;
 

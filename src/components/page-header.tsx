@@ -114,7 +114,7 @@ export default function PageHeader(props: HeaderProps) {
                 </SignedOut>
 
                 <SignedIn>
-                  <UserButton afterSignOutUrl="/"/>
+                  <UserButton afterSignOutUrl="/" />
                 </SignedIn>
               </div>
             </div>
