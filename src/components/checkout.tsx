@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MenuItemType } from "@/components/menu-item";
+import { MenuItemType } from "@/lib/types";
 import { on } from "stream";
 
 interface Props {

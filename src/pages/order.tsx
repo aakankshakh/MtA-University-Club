@@ -2,85 +2,96 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import CartPage from "@/components/cart";
-import { MenuItemType } from "@/components/menu-item";
+import { MenuItemType, MenuType } from "@/lib/types";
 import Header from "@/components/header";
 
 interface MenuItemTypeWithQuantity extends MenuItemType {
   quantity: number;
 }
 
-const menuItems: MenuItemType[] = [
-  {
-    name: "Butter Chicken",
-    price: 17.0,
-    description: "Yummy food! Chicken, butter, cream, ...",
-    lastServed: new Date(),
-    isGlutenFree: false,
-    isVegan: false,
-    isVegetarian: false,
-    isDairyFree: false,
-  },
-  {
-    name: "Shahi Paneer",
-    price: 15.0,
-    description: "Yummy food",
-    lastServed: new Date(),
-    isGlutenFree: false,
-    isVegan: false,
-    isVegetarian: true,
-    isDairyFree: false,
-  },
-  {
-    name: "Organic Parsnip, Carrot & Apple Soup",
-    price: 15.0,
-    description: "Yummy food",
-    lastServed: new Date(),
-    isGlutenFree: true,
-    isVegan: true,
-    isVegetarian: true,
-    isDairyFree: false,
-  },
-  {
-    name: "Garden Salad w/ Balsamic Vinaigrette",
-    price: 15.0,
-    description: "Yummy food",
-    lastServed: new Date(),
-    isGlutenFree: true,
-    isVegan: true,
-    isVegetarian: true,
-    isDairyFree: false,
-  },
-  {
-    name: "Albacore Tuna Cheddar Melt on Ciabatta w/ Chips & Slaw",
-    price: 15.0,
-    description: "Yummy food",
-    lastServed: new Date(),
-    isGlutenFree: false,
-    isVegan: false,
-    isVegetarian: false,
-    isDairyFree: false,
-  },
-  {
-    name: "Tourtiere w/ Greens",
-    price: 15.0,
-    description: "Yummy food",
-    lastServed: new Date(),
-    isGlutenFree: false,
-    isVegan: false,
-    isVegetarian: false,
-    isDairyFree: false,
-  },
-  {
-    name: "Chocolate Swirl Cheesecake w/ Organic Raspberry Sauce",
-    price: 15.0,
-    description: "Yummy food",
-    lastServed: new Date(),
-    isGlutenFree: false,
-    isVegan: false,
-    isVegetarian: false,
-    isDairyFree: false,
-  },
-];
+const menu: MenuType = {
+  createdAt: new Date(),
+  id: "1",
+  items: [
+    {
+      id: "1",
+      name: "Butter Chicken",
+      price: 17.0,
+      description: "yummy food! chicken, butter, cream, ...",
+      lastServed: new Date(),
+      isGlutenFree: false,
+      isVegan: false,
+      isVegetarian: false,
+      isDairyFree: false,
+    },
+    {
+      id: "2",
+      name: "Shahi Paneer",
+      price: 15.0,
+      description: "yummy food",
+      lastServed: new Date(),
+      isGlutenFree: false,
+      isVegan: false,
+      isVegetarian: true,
+      isDairyFree: false,
+    },
+    {
+      id: "3",
+      name: "Organic Parsnip, Carrot & Apple Soup",
+      price: 15.0,
+      description: "yummy food",
+      lastServed: new Date(),
+      isGlutenFree: true,
+      isVegan: true,
+      isVegetarian: true,
+      isDairyFree: false,
+    },
+    {
+      id: "4",
+      name: "Garden Salad w/ Balsamic Vinaigrette",
+      price: 15.0,
+      description: "yummy food",
+      lastServed: new Date(),
+      isGlutenFree: true,
+      isVegan: true,
+      isVegetarian: true,
+      isDairyFree: false,
+    },
+    {
+      id: "4",
+      name: "Albacore Tuna Cheddar Melt on Ciabatta w/ Chips & Slaw",
+      price: 15.0,
+      description: "yummy food",
+      lastServed: new Date(),
+      isGlutenFree: false,
+      isVegan: false,
+      isVegetarian: false,
+      isDairyFree: false,
+    },
+    {
+      id: "5",
+      name: "Tourtiere w/ Greens",
+      price: 15.0,
+      description: "yummy food",
+      lastServed: new Date(),
+      isGlutenFree: false,
+      isVegan: false,
+      isVegetarian: false,
+      isDairyFree: false,
+    },
+    {
+      id: "6",
+      name: "Chocolate Swirl Cheesecake w/ Organic Raspberry Sauce",
+      price: 15.0,
+      description: "yummy food",
+      lastServed: new Date(),
+      isGlutenFree: false,
+      isVegan: false,
+      isVegetarian: false,
+      isDairyFree: false,
+    },
+  ],
+};
 
 export default function OrderPage() {
   const [cart, setCart] = useState<MenuItemTypeWithQuantity[]>([]);
@@ -134,7 +145,7 @@ export default function OrderPage() {
         </div>
       </div>
       <div className="container mx-auto py-8">
-        {menuItems.map((item, index) => (
+        {menu.items.map((item, index) => (
           <div
             key={index}
             className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-gray-300 dark:border-gray-600 py-4"
