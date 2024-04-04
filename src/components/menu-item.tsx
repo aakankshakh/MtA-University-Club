@@ -18,22 +18,22 @@ export default function MenuItem(props: MenuItemProps) {
       <p className="text-gray-600">{item.description}</p>
       <div className="mb-4 ">
         {item.isVegan && (
-          <button className="mr-2 bg-green-500 text-white px-2 py-1 rounded">
+          <button className="mr-2 font-bold bg-green-500 text-white px-2 py-1 rounded">
             v
           </button>
         )}
         {item.isVegetarian && item.isVegan == false && (
-          <button className="mr-2 bg-blue-500 text-white px-2 py-1 rounded">
+          <button className="mr-2 font-bold bg-blue-500 text-white px-2 py-1 rounded">
             V
           </button>
         )}
         {item.isGlutenFree && (
-          <button className="bg-yellow-500 text-white px-2 py-1 rounded">
+          <button className="mr-2 bg-yellow-500 font-bold text-white px-2 py-1 rounded">
             gf
           </button>
         )}
         {item.isDairyFree && (
-          <button className="bg-orange-500 text-white px-2 py-1 rounded">
+          <button className="mr-2 bg-orange-500 font-bold text-white px-2 py-1 rounded">
             df
           </button>
         )}
