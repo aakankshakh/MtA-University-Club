@@ -4,6 +4,7 @@ import { MenuType } from "@/lib/types";
 
 // Hard coded menu to test the display
 const menu: MenuType = {
+  createdAt: new Date(),
   id: "1",
   items: [
     {

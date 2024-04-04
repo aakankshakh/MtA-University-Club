@@ -3,112 +3,126 @@
 // use isModifiable boolean value to determine
 // FUTURE TO DO: add different sections for drinks, meal, dessert
 
+import AddItemForm from "@/components/create-menu/add-item-form";
 import Header from "@/components/header";
 import Menu from "@/components/menu";
-import { CreateMenuType } from "@/lib/types";
-import { useState } from "react";
+import { CreateMenuItemType, MenuItemType, MenuType } from "@/lib/types";
+import { FaceSmileIcon } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
 
-export default function createMenuPage() {
-  const [currMenu, setCurrMenu] = useState<CreateMenuType>({ itemIDs: [] });
+const defaultMenu: MenuType = {
+  id: "temporary",
+  createdAt: new Date(),
+  items: [],
+};
+const defaultItem: CreateMenuItemType = {
+  name: "",
+  description: "",
+  price: 0,
+  isVegan: false,
+  isVegetarian: false,
+  isGlutenFree: false,
+  isDairyFree: false,
+};
+
+const isMenuItemIdentical = (a: MenuItemType, b: CreateMenuItemType) => {
+  let isSame = true;
+  isSame = isSame && a.name === b.name;
+  isSame = isSame && a.description === b.description;
+  isSame = isSame && a.price === b.price;
+  isSame = isSame && a.isVegan === b.isVegan;
+  isSame = isSame && a.isVegetarian === b.isVegetarian;
+  isSame = isSame && a.isGlutenFree === b.isGlutenFree;
+  isSame = isSame && a.isDairyFree === b.isDairyFree;
+  return isSame;
+};
+
+export default function CreateMenuPage() {
+  const [currMenu, setCurrMenu] = useState<MenuType>(defaultMenu);
+  const [menuItems, setMenuItems] = useState<MenuItemType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onAddItem = (item: CreateMenuItemType) => {
+    setIsLoading(true);
+    // Let's check if the item already exists!
+    const existingItem = menuItems.find((i) => isMenuItemIdentical(i, item));
+
+    // It does exist, so we'll just add it to the current menu state and return early.
+    if (existingItem) {
+      setCurrMenu({
+        ...currMenu,
+        items: [...currMenu.items, existingItem],
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    // It doesn't exist, so now we'll add it to the database
+    fetch("/api/create-item", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json())
+      .then((data: MenuItemType) => {
+        console.log("Item created:", data);
+
+        // We know it has been successfully created, so now we'll add it to the current menu state
+        setCurrMenu({
+          ...currMenu,
+          items: [...currMenu.items, data],
+        });
+        setIsLoading(false);
+      });
+  };
+
+  const onRemoveItem = (item: MenuItemType) => {
+    setCurrMenu({
+      ...currMenu,
+      items: currMenu.items.filter((i) => i !== item),
+    });
+  };
+
+  useEffect(() => {
+    // If menuItems has already been loaded, we don't need to fetch it again
+    if (menuItems.length > 0) {
+      return;
+    }
+
+    // Go get those menu items!!
+    fetch("/api/get-all-items")
+      .then((res) => res.json())
+      .then((data: MenuItemType[]) => {
+        console.log("Menu items loaded:", data);
+        setMenuItems(data);
+      });
+  }, [menuItems.length]);
+
   return (
     <main>
       <Header />
-      <div className="flex flex-col">
-        <div>
-          <h1 className="font-bold text-center text-5xl">Add Menu Item</h1>
-
-          <div className="container mx-auto py-8">
-            <form className="max-w-md mx-auto">
-              <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="block text-gray-700 font-bold mb-2"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="description"
-                  className="block text-gray-700 font-bold mb-2"
-                >
-                  Description
-                </label>
-                <textarea
-                  id="description"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="price"
-                  className="block text-gray-700 font-bold mb-2"
-                >
-                  Price
-                </label>
-                <input
-                  type="text"
-                  id="price"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 font-bold mb-2">
-                  Dietary Options
-                </label>
-                <div>
-                  <label className="inline-flex items-center">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox text-indigo-600"
-                    />
-                    <span className="ml-2">Vegan</span>
-                  </label>
-                </div>
-                <div>
-                  <label className="inline-flex items-center">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox text-indigo-600"
-                    />
-                    <span className="ml-2">Vegetarian</span>
-                  </label>
-                </div>
-                <div>
-                  <label className="inline-flex items-center">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox text-indigo-600"
-                    />
-                    <span className="ml-2">Gluten-Free</span>
-                  </label>
-                </div>
-                <div>
-                  <label className="inline-flex items-center">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox text-indigo-600"
-                    />
-                    <span className="ml-2">Dairy-Free</span>
-                  </label>
-                </div>
-              </div>
-              <button
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-                Add Item
-              </button>
-            </form>
+      <div className="flex flex-col lg:flex-row h-full">
+        <div className="basis-full lg:basis-1/3 bg-gray-100 dark:bg-gray-900">
+          <div className="p-8">
+            <h1 className="font-bold text-center text-5xl">Add Menu Item</h1>
+            <AddItemForm
+              defaults={defaultItem}
+              existingItems={menuItems}
+              onSubmit={onAddItem}
+            />
+            {isLoading && (
+              <FaceSmileIcon className="animate-spin mt-4 w-8 h-8" />
+            )}
           </div>
         </div>
-        <div>
-          <Menu menu={currMenu} beingOrdered={false} />
+        <div className="basis-full lg:basis-2/3 lg:min-h-full">
+          <Menu
+            menu={currMenu}
+            beingOrdered={true}
+            removedItem={onRemoveItem}
+          />
         </div>
       </div>
     </main>

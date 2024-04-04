@@ -5,7 +5,7 @@ import { isChef } from "@/lib/server/auth";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const { userId } = await getAuth(req);
 

@@ -37,7 +37,7 @@ export default function PageHeader(props: HeaderProps) {
   const { headerItems } = props;
 
   return (
-    <header className="bg-white dark:bg-gray-900">
+    <header className="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-700">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
