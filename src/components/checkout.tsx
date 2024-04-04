@@ -1,38 +1,43 @@
+import { MenuItemType } from '@/lib/types';
 import React, { useState } from 'react';
-import { MenuItemType } from '@/components/menu-item';
 
 interface Props {
-    onClose: () => void;
-    cartItems: MenuItemTypeWithQuantity[];
-    total: number;
-    clearCartAndCloseModal: () => void; // Callback function to clear the cart and close the modal
+  onClose: () => void;
+  cartItems: MenuItemTypeWithQuantity[];
+  total: number;
+  clearCartAndCloseModal: () => void; // Callback function to clear the cart and close the modal
 }
 
 interface MenuItemTypeWithQuantity extends MenuItemType {
-    quantity: number;
+  quantity: number;
 }
 
-const CheckoutPage: React.FC<Props> = ({ onClose, cartItems, total, clearCartAndCloseModal }) => {
-    const [orderType, setOrderType] = useState<string>('');
-    const [isProcessing, setIsProcessing] = useState<boolean>(false);
-    const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
-    const [specifications, setSpecifications] = useState<string>('');
+const CheckoutPage: React.FC<Props> = ({
+  onClose,
+  cartItems,
+  total,
+  clearCartAndCloseModal,
+}) => {
+  const [orderType, setOrderType] = useState<string>("");
+  const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
+  const [specifications, setSpecifications] = useState<string>("");
 
-    const handlePlaceOrder = () => {
-        setIsProcessing(true);
+  const handlePlaceOrder = () => {
+    setIsProcessing(true);
 
-        // Simulate a delay before displaying "Thank you for your order"
-        setTimeout(() => {
-            setIsProcessing(false);
-            setOrderPlaced(true);
-            clearCartAndCloseModal(); // Clear the cart and close the modal upon placing the order
-        }, 2000);
-    };
+    // Simulate a delay before displaying "Thank you for your order"
+    setTimeout(() => {
+      setIsProcessing(false);
+      setOrderPlaced(true);
+      clearCartAndCloseModal(); // Clear the cart and close the modal upon placing the order
+    }, 2000);
+  };
 
-    // Function to check if the order type is selected
-    const isOrderTypeSelected = () => {
-        return orderType !== '';
-    };
+  // Function to check if the order type is selected
+  const isOrderTypeSelected = () => {
+    return orderType !== "";
+  };
 
     return (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-800 dark:bg-gray-900 bg-opacity-50 flex justify-center items-center">
@@ -79,4 +84,3 @@ const CheckoutPage: React.FC<Props> = ({ onClose, cartItems, total, clearCartAnd
 };
 
 export default CheckoutPage;
-

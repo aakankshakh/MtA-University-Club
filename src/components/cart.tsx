@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { MenuItemType } from '@/components/menu-item';
 import CheckoutPage from '@/components/checkout';
 import ThankYouPage from '@/pages/thankyou-page';
-import { faL } from '@fortawesome/free-solid-svg-icons';
+import { MenuItemType } from '@/lib/types';
+
 
 interface MenuItemTypeWithQuantity extends MenuItemType {
-    quantity: number;
+  quantity: number;
 }
 
 interface Props {
-    cart: MenuItemTypeWithQuantity[];
-    onClose: () => void;
-    updateCart: (newCart: MenuItemTypeWithQuantity[]) => void;
+  cart: MenuItemTypeWithQuantity[];
+  onClose: () => void;
+  updateCart: (newCart: MenuItemTypeWithQuantity[]) => void;
 }
 
 export default function CartPage({ cart, onClose, updateCart }: Props) {
@@ -25,45 +25,48 @@ export default function CartPage({ cart, onClose, updateCart }: Props) {
     };
 
 
-    const calculateTotalPrice = () => {
-        return cartItems.reduce((total, cartItem) => total + cartItem.price * cartItem.quantity, 0);
-    };
+  const calculateTotalPrice = () => {
+    return cartItems.reduce(
+      (total, cartItem) => total + cartItem.price * cartItem.quantity,
+      0,
+    );
+  };
 
-    const removeCartItem = (index: number) => {
-        const newCart = [...cartItems];
-        newCart.splice(index, 1);
-        setCartItems(newCart);
-        updateCart(newCart);
-    };
+  const removeCartItem = (index: number) => {
+    const newCart = [...cartItems];
+    newCart.splice(index, 1);
+    setCartItems(newCart);
+    updateCart(newCart);
+  };
 
-    const updateQuantity = (index: number, quantity: number) => {
-        const newCart = cartItems.map((item, i) => {
-            if (i === index) {
-                return { ...item, quantity };
-            }
-            return item;
-        });
-        setCartItems(newCart);
-        updateCart(newCart);
-    };
+  const updateQuantity = (index: number, quantity: number) => {
+    const newCart = cartItems.map((item, i) => {
+      if (i === index) {
+        return { ...item, quantity };
+      }
+      return item;
+    });
+    setCartItems(newCart);
+    updateCart(newCart);
+  };
 
-    const incrementQuantity = (index: number) => {
-        const newQuantity = cartItems[index].quantity + 1;
-        updateQuantity(index, newQuantity);
-    };
+  const incrementQuantity = (index: number) => {
+    const newQuantity = cartItems[index].quantity + 1;
+    updateQuantity(index, newQuantity);
+  };
 
-    const decrementQuantity = (index: number) => {
-        const newQuantity = cartItems[index].quantity - 1;
-        if (newQuantity > 0) {
-            updateQuantity(index, newQuantity);
-        } else {
-            removeCartItem(index);
-        }
-    };
+  const decrementQuantity = (index: number) => {
+    const newQuantity = cartItems[index].quantity - 1;
+    if (newQuantity > 0) {
+      updateQuantity(index, newQuantity);
+    } else {
+      removeCartItem(index);
+    }
+  };
 
-    const handleCheckout = () => {
-        setShowCheckout(true);
-    };
+  const handleCheckout = () => {
+    setShowCheckout(true);
+  };
 
     const clearCartAndCloseModal = () => {
         setCartItems([]);
@@ -109,4 +112,3 @@ export default function CartPage({ cart, onClose, updateCart }: Props) {
         </div>
     );
 }
-
