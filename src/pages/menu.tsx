@@ -30,7 +30,7 @@ export default function ViewMenuPage() {
     return (
       <main>
         <Header />
-        <h1 className="m-32 font-bold text-3xl text-center">
+        <h1 className="m-32 font-bold text-xl lg:text-3xl text-center">
           The MtA University Club Menu has not been published yet for today,
           please come back later!
         </h1>

@@ -18,13 +18,13 @@ export default function Orders(props: OrdersProps) {
           <div key={order.id} className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-bold mb-2">Order ID: {order.id}</h2>
             <p className="text-gray-600 mb-2">
-              Customer Name: {order.customer}
-            </p>
-            <p className="text-gray-600 mb-2">
-              Total Price: {order.totalPrice}
+              Customer: {order.customer}
             </p>
             <p className="text-gray-600 mb-2">
               Items: {order.items.map((item) => item.name).join(", ")}
+            </p>
+            <p className="text-gray-600 mb-2">
+              Total Price: {order.totalPrice}
             </p>
           </div>
         ))}

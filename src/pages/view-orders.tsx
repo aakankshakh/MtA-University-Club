@@ -1,3 +1,4 @@
+import Header from "@/components/header";
 import Orders, { OrdersType } from "@/components/orders";
 
 const orders: OrdersType = {
@@ -26,10 +27,13 @@ const orders: OrdersType = {
 };
 export default function ViewOrders() {
   return (
-    <div className="container mx-auto py-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Orders orders={orders} />
+    <main>
+      <Header/>
+      <div className="container mx-auto py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Orders orders={orders} />
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

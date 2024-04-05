@@ -162,7 +162,7 @@ export default function CreateMenuPage() {
         <div className="flex flex-col lg:flex-row h-full">
           <div className="basis-full lg:basis-1/3">
             <div className="p-8">
-              <h1 className="font-bold text-center text-5xl">Add Menu Item</h1>
+              <h1 className="font-bold text-center text-3xl lg:text-5xl">Add Menu Item</h1>
               <AddItemForm
                 defaults={defaultItem}
                 existingItems={menuItems}
