@@ -13,6 +13,7 @@ type MenuProps = {
 export default function Menu(props: MenuProps) {
   // Creating local variables to store props
   const { menu, beingOrdered, removedItem } = props;
+  console.log(menu);
   const today = new Date();
 
   return (

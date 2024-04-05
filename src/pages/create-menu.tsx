@@ -6,7 +6,7 @@
 import AddItemForm from "@/components/create-menu/add-item-form";
 import Header from "@/components/header";
 import Menu from "@/components/menu";
-import { CreateMenuItemType, MenuItemType, MenuType } from "@/lib/types";
+import { CreateMenuItemType, CreateMenuType, MenuItemType, MenuType } from "@/lib/types";
 import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
@@ -40,6 +40,7 @@ const isMenuItemIdentical = (a: MenuItemType, b: CreateMenuItemType) => {
 export default function CreateMenuPage() {
   const [currMenu, setCurrMenu] = useState<MenuType>(defaultMenu);
   const [menuItems, setMenuItems] = useState<MenuItemType[]>([]);
+  const [menus, setMenus] = useState<MenuType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const onAddItem = (item: CreateMenuItemType) => {
@@ -85,6 +86,38 @@ export default function CreateMenuPage() {
     });
   };
 
+  const onAddMenu = () => {
+    setIsLoading(true);
+    // Let's check if the menu already exists
+    const existingMenu = menus.find((menu) => {
+      const menuDate = new Date(menu.createdAt);
+      console.log(menu);
+      return menuDate.toLocaleDateString() == currMenu.createdAt.toLocaleDateString();
+    });
+
+    // It does exist, so we'll just tell the user that it was already published.
+    if (existingMenu) {
+      alert("Today's Menu was already published.");
+      return;
+    }
+
+    const menu: CreateMenuType = {itemIDs: currMenu.items.map((item) => item.id)}
+
+    // It doesn't exist, so now we'll add it to the database
+    fetch("/api/create-menu", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(menu),
+    })
+      .then((res) => res.json())
+      .then((data: MenuType) => {
+        console.log("Menu published:", data);
+        alert("Menu published!");
+      });
+  };
+
   useEffect(() => {
     // If menuItems has already been loaded, we don't need to fetch it again
     if (menuItems.length > 0) {
@@ -100,31 +133,59 @@ export default function CreateMenuPage() {
       });
   }, [menuItems.length]);
 
+  useEffect(() => {
+    if (menus.length > 0) {
+      return;
+    }
+
+    fetch("api/get-all-menus")
+      .then((res) => res.json())
+      .then((data: MenuType[]) => {
+        console.log("Menus loaded:", data);
+        setMenus(data);
+      })
+  }, [menus.length]);
+
   return (
-    <main>
+    <main className="bg-gray-100 dark:bg-gray-900">
       <Header />
-      <div className="flex flex-col lg:flex-row h-full">
-        <div className="basis-full lg:basis-1/3 bg-gray-100 dark:bg-gray-900">
-          <div className="p-8">
-            <h1 className="font-bold text-center text-5xl">Add Menu Item</h1>
-            <AddItemForm
-              defaults={defaultItem}
-              existingItems={menuItems}
-              onSubmit={onAddItem}
+      <div className="flex flex-col">
+        <div className="flex flex-col lg:flex-row h-full">
+          <div className="basis-full lg:basis-1/3">
+            <div className="p-8">
+              <h1 className="font-bold text-center text-5xl">Add Menu Item</h1>
+              <AddItemForm
+                defaults={defaultItem}
+                existingItems={menuItems}
+                onSubmit={onAddItem}
+              />
+              {isLoading && (
+                <FaceSmileIcon className="animate-spin mt-4 w-8 h-8" />
+              )}
+            </div>
+          </div>
+          <div className="basis-full lg:basis-2/3 lg:min-h-full">
+            <Menu
+              menu={currMenu}
+              beingOrdered={true}
+              removedItem={onRemoveItem}
             />
-            {isLoading && (
-              <FaceSmileIcon className="animate-spin mt-4 w-8 h-8" />
-            )}
           </div>
         </div>
-        <div className="basis-full lg:basis-2/3 lg:min-h-full">
-          <Menu
-            menu={currMenu}
-            beingOrdered={true}
-            removedItem={onRemoveItem}
-          />
+        <div className="m-10 mb-15 text-center">
+          <button
+        className="bg-[#B89112] hover:bg-[#9c8439] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        onClick={(e) => {
+          e.preventDefault();
+          onAddMenu();
+        }}
+      >
+        Publish Menu!
+      </button>
+          
         </div>
       </div>
     </main>
+    
   );
 }

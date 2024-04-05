@@ -9,12 +9,14 @@ const signedOutHeaderItems: HeaderItem[] = [
 
 const signedInCustomerHeaderItems: HeaderItem[] = [
   { pageName: "Home", pageLink: "/" },
-  { pageName: "Place Order", pageLink: "/order" }
+  { pageName: "Place Order", pageLink: "/order" },
+  { pageName: "Previous Orders", pageLink: "/previous-orders" }
 ];
 
 const signedInChefHeaderItems: HeaderItem[] = [
   { pageName: "Home", pageLink: "/" },
-  { pageName: "Place Order", pageLink: "/order" },
+  { pageName: "View Menu", pageLink: "/menu" },
+  { pageName: "View Orders", pageLink: "/view-orders" },
   { pageName: "Create Menu", pageLink: "/create-menu" }
 ];
 

@@ -1,97 +1,50 @@
 import Header from "@/components/header";
 import Menu from "@/components/menu";
 import { MenuType } from "@/lib/types";
+import { useEffect, useState } from "react";
 
-// Hard coded menu to test the display
-const menu: MenuType = {
-  createdAt: new Date(),
-  id: "1",
-  items: [
-    {
-      id: "1",
-      name: "Butter Chicken",
-      price: 17.0,
-      description: "yummy food! chicken, butter, cream, ...",
-      lastServed: new Date(),
-      isGlutenFree: false,
-      isVegan: false,
-      isVegetarian: false,
-      isDairyFree: false,
-    },
-    {
-      id: "2",
-      name: "Shahi Paneer",
-      price: 15.0,
-      description: "yummy food",
-      lastServed: new Date(),
-      isGlutenFree: false,
-      isVegan: false,
-      isVegetarian: true,
-      isDairyFree: false,
-    },
-    {
-      id: "3",
-      name: "Organic Parsnip, Carrot & Apple Soup",
-      price: 15.0,
-      description: "yummy food",
-      lastServed: new Date(),
-      isGlutenFree: true,
-      isVegan: true,
-      isVegetarian: true,
-      isDairyFree: false,
-    },
-    {
-      id: "4",
-      name: "Garden Salad w/ Balsamic Vinaigrette",
-      price: 15.0,
-      description: "yummy food",
-      lastServed: new Date(),
-      isGlutenFree: true,
-      isVegan: true,
-      isVegetarian: true,
-      isDairyFree: false,
-    },
-    {
-      id: "4",
-      name: "Albacore Tuna Cheddar Melt on Ciabatta w/ Chips & Slaw",
-      price: 15.0,
-      description: "yummy food",
-      lastServed: new Date(),
-      isGlutenFree: false,
-      isVegan: false,
-      isVegetarian: false,
-      isDairyFree: false,
-    },
-    {
-      id: "5",
-      name: "Tourtiere w/ Greens",
-      price: 15.0,
-      description: "yummy food",
-      lastServed: new Date(),
-      isGlutenFree: false,
-      isVegan: false,
-      isVegetarian: false,
-      isDairyFree: false,
-    },
-    {
-      id: "6",
-      name: "Chocolate Swirl Cheesecake w/ Organic Raspberry Sauce",
-      price: 15.0,
-      description: "yummy food",
-      lastServed: new Date(),
-      isGlutenFree: false,
-      isVegan: false,
-      isVegetarian: false,
-      isDairyFree: false,
-    },
-  ],
-};
 
 export default function ViewMenuPage() {
-  return (
+  const [menu, setMenu] = useState<MenuType>();
+  useEffect(() =>
+  {
+    if (menu) {
+      console.log(menu);
+      return;
+    }
+
+    fetch("/api/get-todays-menu").then((res) => res.json()).then((data) => {
+      if (data.error) {
+        setMenu(undefined);
+      }
+      else {
+        setMenu(data);
+      }
+    })
+      .catch((error) => {
+        console.log(error);
+        setMenu(undefined)
+      })
+  }, [menu])
+
+  if (menu == undefined) {
+    return (
+      <main>
+        <Header/>
+        <h1 className="m-32 font-bold text-3xl text-center">
+          Today's menu hasn't been published yet! Come back later
+        </h1>
+      </main>
+    )
+  }
+  else {
+    return (
     <main>
       <Header />
       <Menu beingOrdered={false} menu={menu} />
     </main>
   );
+  }
+  
+  
 }
