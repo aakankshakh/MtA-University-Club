@@ -19,7 +19,9 @@ export default function Menu(props: MenuProps) {
   return (
     <main className="bg-white dark:bg-gray-900 p-8 h-full flex flex-col">
       <div className="flex-none flex flex-col">
-        <h1 className="font-bold text-2xl lg:text-5xl text-center">MtA University Club Menu</h1>
+        <h1 className="font-bold text-2xl lg:text-5xl text-center">
+          MtA University Club Menu
+        </h1>
         <h3 className="italic text-center">{today.toLocaleDateString()}</h3>
       </div>
       <div className="flex-grow">

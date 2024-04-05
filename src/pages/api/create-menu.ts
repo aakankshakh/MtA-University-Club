@@ -26,7 +26,7 @@ export default async function handler(
     const menu: MenuType = {
       id: uuidv4(),
       items: menuItems,
-      createdAt: new Date()
+      createdAt: new Date(),
     };
     await createMenu(menu);
     res.status(201).json(menu);

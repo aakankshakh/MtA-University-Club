@@ -6,7 +6,12 @@
 import AddItemForm from "@/components/create-menu/add-item-form";
 import Header from "@/components/header";
 import Menu from "@/components/menu";
-import { CreateMenuItemType, CreateMenuType, MenuItemType, MenuType } from "@/lib/types";
+import {
+  CreateMenuItemType,
+  CreateMenuType,
+  MenuItemType,
+  MenuType,
+} from "@/lib/types";
 import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
@@ -92,7 +97,9 @@ export default function CreateMenuPage() {
     const existingMenu = menus.find((menu) => {
       const menuDate = new Date(menu.createdAt);
       console.log(menu);
-      return menuDate.toLocaleDateString() == currMenu.createdAt.toLocaleDateString();
+      return (
+        menuDate.toLocaleDateString() == currMenu.createdAt.toLocaleDateString()
+      );
     });
 
     // It does exist, so we'll just tell the user that it was already published.
@@ -101,7 +108,9 @@ export default function CreateMenuPage() {
       return;
     }
 
-    const menu: CreateMenuType = {itemIDs: currMenu.items.map((item) => item.id)}
+    const menu: CreateMenuType = {
+      itemIDs: currMenu.items.map((item) => item.id),
+    };
 
     // It doesn't exist, so now we'll add it to the database
     fetch("/api/create-menu", {
@@ -143,7 +152,7 @@ export default function CreateMenuPage() {
       .then((data: MenuType[]) => {
         console.log("Menus loaded:", data);
         setMenus(data);
-      })
+      });
   }, [menus.length]);
 
   return (
@@ -174,18 +183,16 @@ export default function CreateMenuPage() {
         </div>
         <div className="m-10 mb-15 text-center">
           <button
-        className="bg-[#B89112] hover:bg-[#9c8439] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        onClick={(e) => {
-          e.preventDefault();
-          onAddMenu();
-        }}
-      >
-        Publish Menu!
-      </button>
-          
+            className="bg-[#B89112] hover:bg-[#9c8439] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={(e) => {
+              e.preventDefault();
+              onAddMenu();
+            }}
+          >
+            Publish Menu!
+          </button>
         </div>
       </div>
     </main>
-    
   );
 }

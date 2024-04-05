@@ -131,7 +131,7 @@ export default function OrderPage() {
   };
 
   return (
-    <main className="bg-white dark:bg-gray-800">
+    <main className="bg-white dark:bg-gray-900">
       <Header />
       <div className="sticky top-0 bg-gray-200 dark:bg-gray-700 px-4 py-2 mb-4 z-10 flex justify-between items-center">
         <h1 className="font-bold text-xl">Order Food</h1>

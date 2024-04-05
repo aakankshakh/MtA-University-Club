@@ -28,7 +28,7 @@ export default function SearchExistingItemsInput(props: SearchExistingProps) {
           itemName
             .toLowerCase()
             .replace(/\s+/g, "")
-            .includes(query.toLowerCase().replace(/\s+/g, ""))
+            .includes(query.toLowerCase().replace(/\s+/g, "")),
         );
 
   return (
