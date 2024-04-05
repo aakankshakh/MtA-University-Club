@@ -42,7 +42,7 @@ export default function MenuItem(props: MenuItemProps) {
 
   return (
     <div className="my-4">
-      <h2 className="text-xl font-bold">
+      <h2 className="lg:text-xl font-bold">
         {beingOrdered && (
           <button
             className="mr-2 h-5 w-5 text-red-700 dark:text-red-500"
@@ -54,7 +54,7 @@ export default function MenuItem(props: MenuItemProps) {
         {item.name} - ${item.price}
         <Badges {...item} />
       </h2>
-      <p className="text-gray-600 dark:text-gray-300 mt-2">
+      <p className="text-sm lg:text-base text-gray-600 dark:text-gray-300 mt-2">
         {item.description}
       </p>
     </div>

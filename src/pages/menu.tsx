@@ -32,7 +32,7 @@ export default function ViewMenuPage() {
       <main>
         <Header/>
         <h1 className="m-32 font-bold text-3xl text-center">
-          Today's menu hasn't been published yet! Come back later
+          The MtA University Club Menu has not been published yet for today, please come back later!
         </h1>
       </main>
     )
