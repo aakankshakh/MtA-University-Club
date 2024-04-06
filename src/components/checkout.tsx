@@ -34,6 +34,7 @@ const CheckoutPage: React.FC<Props> = ({
     }, 2000);
   };
 
+
   // Function to check if the order type is selected
   const isOrderTypeSelected = () => {
     return orderType !== "";
