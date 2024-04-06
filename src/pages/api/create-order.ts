@@ -14,7 +14,6 @@ export default async function handler(
     res.status(401).json({ error: "Unauthorized" });
     return;
   }
-
   if (req.method === "POST") {
     const createOrderData: CreateOrderType = req.body;
     const items = await getAllItems();
