@@ -11,9 +11,10 @@ interface Props {
   cart: MenuItemTypeWithQuantity[];
   onClose: () => void;
   updateCart: (newCart: MenuItemTypeWithQuantity[]) => void;
+  createOrder: (order: any) => void
 }
 
-export default function CartPage({ cart, onClose, updateCart }: Props) {
+export default function CartPage({ cart, onClose, updateCart, createOrder }: Props) {
   const [cartItems, setCartItems] = useState<MenuItemTypeWithQuantity[]>(cart);
   const [showCheckout, setShowCheckout] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
@@ -138,6 +139,7 @@ export default function CartPage({ cart, onClose, updateCart }: Props) {
           onClose={handleCloseCheckoutModal}
           cartItems={cartItems}
           total={calculateTotalPrice()}
+          createOrder={createOrder}
           clearCartAndCloseModal={clearCartAndCloseModal}
         />
       )}

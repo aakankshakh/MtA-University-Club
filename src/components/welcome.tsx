@@ -1,7 +1,10 @@
-import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
+
+import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton} from "@clerk/nextjs";
 import Link from "next/link";
+import { getAuth } from "@clerk/nextjs/server";
 
 export default function Welcome() {
+  //const { userId } = await getAuth(req);
   return (
     <div className="relative h-screen overflow-hidden">
       {/* Background Image */}
@@ -17,6 +20,11 @@ export default function Welcome() {
           >
             View Menu
           </Link>
+          <SignedOut>
+                <p className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 rounded-md hover:bg-amber-400 dark:hover:bg-amber-700 px-3.5 py-2.5 ">
+                  <SignInButton /> <span aria-hidden="true">&rarr;</span>
+                </p>
+              </SignedOut>
           <SignedIn>
             <Link
               href="/order"
@@ -24,6 +32,7 @@ export default function Welcome() {
             >
               Place Order Now!
             </Link>
+            <UserButton afterSignOutUrl="/" />
           </SignedIn>
         </div>
 

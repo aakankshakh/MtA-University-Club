@@ -9,10 +9,10 @@ export default async function handler(
 ) {
   const { userId } = await getAuth(req);
 
-  if (!userId || !isChef(userId)) {
+ if (!userId || !isChef(userId)) {
     res.status(401).json({ error: "Unauthorized" });
     return;
-  }
+  } 
 
   if (req.method === "GET") {
     const menus = await getAllMenus();

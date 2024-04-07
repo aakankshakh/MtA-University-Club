@@ -52,6 +52,8 @@ export type OrderType = {
   items: MenuItemType[];
   totalPrice: number;
   status: "placed" | "fulfilled";
+  specialRequest?: string
+  orderType: string
 };
 
 export type CreateOrderType = {

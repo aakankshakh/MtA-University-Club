@@ -1,7 +1,8 @@
 import Welcome from "@/components/welcome";
 import { useEffect } from "react";
 
-export default function HomePage() {
+export default function HomePage(prop: any) {
+  console.log(prop)
   useEffect(() => {
     fetch("/api/get-all-orders")
       .then((res) => res.json())

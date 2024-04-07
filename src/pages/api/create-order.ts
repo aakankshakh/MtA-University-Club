@@ -14,17 +14,20 @@ export default async function handler(
     res.status(401).json({ error: "Unauthorized" });
     return;
   }
-  if (req.method === "POST") {
-    const createOrderData: CreateOrderType = req.body;
-    const items = await getAllItems();
-    const orderItems = items.filter(
-      (item) => createOrderData.itemIDs.indexOf(item.id) != -1,
-    );
 
-    const order: OrderType = {
+    //changed
+  if (req.method === "POST") {
+    const createOrderData: any[] = req.body; //from input
+    const items = await getAllItems();
+    const orderItems = items.filter((item) => { 
+      const orderData = createOrderData.filter(order => order.id !== item.id);
+
+      return orderData;
+    });
+
+    const order: OrderType | any = {
       id: uuidv4(),
       createdAt: new Date(),
-      ...createOrderData,
       status: "placed",
       items: orderItems,
     };

@@ -12,7 +12,7 @@ export default async function handler(
     res.status(401).json({ error: "Unauthorized" });
     return;
   }
-
+  
   if (req.method === "GET") {
     const orders = await getUserOrders(userId);
     res.status(200).json(orders);

@@ -8,7 +8,7 @@ export async function createItem(item: MenuItemType) {
 }
 
 export async function createOrder(order: OrderType, userID: string) {
-  await kv.set(`order.${order.id}`, order);
+  await kv.set(`order.${order.id}`, order); //no user id
   await kv.lpush("OrderList", order.id);
   await kv.lpush(`UserOrderList.${userID}`, order.id);
 }
