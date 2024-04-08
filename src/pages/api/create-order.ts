@@ -29,7 +29,7 @@ export default async function handler(
       id: uuidv4(),
       createdAt: new Date(),
       status: "placed",
-      items: orderItems,
+      items: createOrderData,
     };
     await createOrder(order, userId);
     res.status(201).json(order);
