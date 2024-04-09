@@ -4,7 +4,6 @@ import Link from "next/link";
 import { getAuth } from "@clerk/nextjs/server";
 
 export default function Welcome() {
-  //const { userId } = await getAuth(req);
   return (
     <div className="relative h-screen overflow-hidden">
       {/* Background Image */}
@@ -67,3 +66,4 @@ export default function Welcome() {
     </div>
   );
 }
+
