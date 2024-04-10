@@ -25,7 +25,7 @@ export default function Orders(props: OrdersProps) {
               Items:
               {order.items.map((item) => (
                 <div key={item.id}>
-                  {item.name} quantity: {item.quantity}
+                  {item.name} - quantity: {item.quantity}
                 </div>
               ))}
             </p>
