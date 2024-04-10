@@ -53,7 +53,7 @@ export type OrderType = {
   items: MenuItemType[];
   totalPrice: number;
   status: "placed" | "fulfilled";
-  specifications?: string
+  specialRequest?: string
   orderType: string
 };
 
@@ -61,7 +61,6 @@ export type CreateOrderType = {
   customer: string;
   itemIDs: string[];
   totalPrice: number;
-  
 };
 
 export type UpdateOrderType = {

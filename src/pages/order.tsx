@@ -7,8 +7,6 @@ import Header from "@/components/header";
 
 export interface MenuItemTypeWithQuantity extends MenuItemType {
   quantity: number;
-  orderType: string, 
-  specifications: string, 
 }
 
 export default function OrderPage() {
@@ -16,8 +14,6 @@ export default function OrderPage() {
   const [cart, setCart] = useState<MenuItemTypeWithQuantity[]>([]);
   const [addedMessage, setAddedMessage] = useState<{ [key: string]: string }>({});
   const [isCartModalOpen, setIsCartModalOpen] = useState<boolean>(false);
-  const [orderType, setOrderType] = useState<string>("");
-  const [specifications, setSpecifications] = useState<string>("");
 
   useEffect(() => {
     // Fetch menu data from the API
@@ -36,7 +32,7 @@ export default function OrderPage() {
       );
       setCart(updatedCart);
     } else {
-      setCart((prevCart) => [...prevCart, { ...item, quantity: 1 , orderType, specifications}] as  any);
+      setCart((prevCart) => [...prevCart, { ...item, quantity: 1 }]);
     }
 
     setAddedMessage((prev) => ({ ...prev, [item.name]: "Added to cart" }));
@@ -49,11 +45,12 @@ export default function OrderPage() {
     setIsCartModalOpen((prev) => !prev);
   };
 
-  const updateCart = (newCart: any[]) => {
+  const updateCart = (newCart: MenuItemTypeWithQuantity[]) => {
     setCart(newCart);
   };
 
-const createOrder = async (order: any[]) => {
+//creating an order
+const createOrder = async (order: MenuItemTypeWithQuantity[]) => {
   try {
     const response = await fetch("/api/create-order", {
       method: "POST",
@@ -121,16 +118,7 @@ const createOrder = async (order: any[]) => {
         )}
       </div>
       {isCartModalOpen && (
-      <CartPage 
-        cart={cart} 
-        onClose={toggleCartModal} 
-        updateCart={updateCart} 
-        createOrder= {createOrder}
-        orderType = {orderType}
-        specifications = {specifications}
-        setSpecifications = { setSpecifications}
-        setOrderType = { setOrderType}
-           />
+        <CartPage cart={cart} onClose={toggleCartModal} updateCart={updateCart} createOrder={createOrder} />
       )}
     </main>
   );  

@@ -12,19 +12,10 @@ interface Props {
   onClose: () => void;
   updateCart: (newCart: MenuItemTypeWithQuantity[]) => void;
   createOrder: (order: any) => void
-  orderType: any;
-  specifications?: string;
-  setOrderType: (order: any) => void;
-  setSpecifications: (specifications: any) => void
 }
 
-export default function CartPage({ cart, onClose, updateCart, createOrder , 
-  orderType,
-  specifications,
-  setSpecifications,
-  setOrderType,
-}: Props) {
-  const [cartItems, setCartItems] = useState<any[]>(cart);
+export default function CartPage({ cart, onClose, updateCart, createOrder }: Props) {
+  const [cartItems, setCartItems] = useState<MenuItemTypeWithQuantity[]>(cart);
   const [showCheckout, setShowCheckout] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
 
@@ -150,10 +141,6 @@ export default function CartPage({ cart, onClose, updateCart, createOrder ,
           total={calculateTotalPrice()}
           createOrder={createOrder}
           clearCartAndCloseModal={clearCartAndCloseModal}
-          orderType = {orderType}
-          specifications = {specifications}
-          setSpecifications = { setSpecifications}
-          setOrderType = { setOrderType}
         />
       )}
     </div>
