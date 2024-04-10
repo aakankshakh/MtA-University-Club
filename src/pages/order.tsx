@@ -91,7 +91,7 @@ const createOrder = async (order: any[]) => {
         </div>
       </div>
       <div className="container mx-auto py-8">
-        {menu && menu.items ? (
+        {menu ? (
           menu.items.map((item, index) => (
             <div
               key={index}
@@ -117,7 +117,7 @@ const createOrder = async (order: any[]) => {
             </div>
           ))
         ) : (
-          <p className="text-gray-600 dark:text-gray-300">Menu of the day has not been established yet.</p>
+          <p className="text-gray-600 dark:text-gray-300">Menu of the day has not been established yet, please come back later!</p>
         )}
       </div>
       {isCartModalOpen && (
@@ -133,5 +133,5 @@ const createOrder = async (order: any[]) => {
            />
       )}
     </main>
-  );
+  );  
 }
