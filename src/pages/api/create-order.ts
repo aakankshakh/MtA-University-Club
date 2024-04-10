@@ -25,14 +25,17 @@ export default async function handler(
       return orderData;
     });
 
+
     const order: OrderType | any = {
       id: uuidv4(),
       createdAt: new Date(),
       status: "placed",
       items: createOrderData,
+      customer: userId,
     };
     await createOrder(order, userId);
     res.status(201).json(order);
+    
   } else {
     res.status(405).json({ error: "Method not allowed" });
   }

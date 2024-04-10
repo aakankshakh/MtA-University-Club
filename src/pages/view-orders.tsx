@@ -2,37 +2,13 @@ import Header from "@/components/header";
 import Orders, { OrdersType } from "@/components/orders";
 import { useEffect, useState } from "react";
 
-//hard-coded for testing I assume?
-// const orders: OrdersType = {
-//   ordersList: [
-//     {
-//       id: "1",
-//       createdAt: new Date(),
-//       customer: "Aakanksha",
-//       items: [
-//         {
-//           id: "1",
-//           name: "Butter Chicken",
-//           price: 17.0,
-//           description: "yummy food! chicken, butter, cream, ...",
-//           lastServed: new Date(),
-//           isGlutenFree: false,
-//           isVegan: false,
-//           isVegetarian: false,
-//           isDairyFree: false,
-//         },
-//       ],
-//       totalPrice: 17.0,
-//       status: "placed",
-//     },
-//   ],
-// };
+
 export default function ViewOrders() {
   const [orders, setGetOrders] =  useState<any[]>([]);
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const response = await fetch("/api/get-all-orders", {
+        const response = await fetch("/api/get-todays-orders", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -52,6 +28,8 @@ export default function ViewOrders() {
 
     getOrders()
   }, []);
+
+  console.log(orders)
 
   return (
     <main>

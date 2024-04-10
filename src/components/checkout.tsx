@@ -7,6 +7,10 @@ interface Props {
   total: number;
   clearCartAndCloseModal: () => void;
   createOrder: (order: MenuItemTypeWithQuantity[]) => void;
+  orderType: any;
+  specifications?: string;
+  setOrderType: (order: any) => void;
+  setSpecifications: (specifications: any) => void
 }
 
 const CheckoutPage: React.FC<Props> = ({
@@ -15,11 +19,15 @@ const CheckoutPage: React.FC<Props> = ({
   total,
   clearCartAndCloseModal,
   createOrder,
+  orderType,
+  specifications,
+  setSpecifications,
+  setOrderType,
 }) => {
-  const [orderType, setOrderType] = useState<string>("");
+  // const [orderType, setOrderType] = useState<string>("");
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
-  const [specifications, setSpecifications] = useState<string>("");
+  // const [specifications, setSpecifications] = useState<string>("");
 
   const handlePlaceOrder = (e: React.FormEvent<HTMLFormElement>) => { // Pass the event parameter
     e.preventDefault(); // Prevent default form submission behavior
@@ -27,10 +35,10 @@ const CheckoutPage: React.FC<Props> = ({
     setIsProcessing(true);
     
     // Construct the order object including orderType and specifications
-    const order: MenuItemTypeWithQuantity[] = cartItems.map((item) => ({
+    const order: any[] = cartItems.map((item) => ({
       ...item,
-      orderType: orderType, // Add orderType to each item
-      specifications: specifications, // Add specifications to each item
+      orderType: orderType, 
+      specifications: specifications, 
     }));
 
     createOrder(order); // Pass the constructed order to createOrder function

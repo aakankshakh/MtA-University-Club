@@ -21,10 +21,16 @@ export default function Orders(props: OrdersProps) {
               Customer: {order.customer}
             </p>
             <p className="text-gray-600 mb-2">
-              Items: {order.items.map((item) => item.name).join(", ")}
+              Items: {order.items.map((item) => (item.name)+ " x " + (item.quantity)).join(", ")}
             </p>
             <p className="text-gray-600 mb-2">
-              Total Price: ${order.items.reduce((total: any, item: any) => total + item.price, 0)}
+              Ordertype: {order.items.map((type: any) => (type.orderType))}
+            </p>
+            <p className="text-gray-600 mb-2">
+              Specifications: {order.items.map((type: any) => (type.specifications))}
+            </p>
+            <p className="text-gray-600 mb-2">
+              Total Price: ${order.items.reduce((total: any, item: any) =>total + (item.price* item.quantity) , 0)}
             </p>
           </div>
         ))}

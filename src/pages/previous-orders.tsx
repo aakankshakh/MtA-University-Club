@@ -28,7 +28,8 @@ export default function MyOrders() {
 
     getOrders()
   }, []);
-
+  console.log(orders)
+  
   return (
     <main>
       <Header/>
