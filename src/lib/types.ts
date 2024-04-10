@@ -3,6 +3,7 @@ export type MenuItemType = {
   name: string;
   price: number;
   description: string;
+  quantity : number;
   lastServed?: Date;
   isGlutenFree: boolean;
   isVegan: boolean;

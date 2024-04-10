@@ -20,6 +20,7 @@ export default async function handler(
     const item: MenuItemType = {
       id: uuidv4(),
       ...createItemData,
+      quantity: 0
     };
     await createItem(item);
     res.status(201).json(item);

@@ -1,7 +1,5 @@
-
-import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton} from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
-import { getAuth } from "@clerk/nextjs/server";
 
 export default function Welcome() {
   return (
@@ -20,10 +18,10 @@ export default function Welcome() {
             View Menu
           </Link>
           <SignedOut>
-                <p className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 rounded-md hover:bg-amber-400 dark:hover:bg-amber-700 px-3.5 py-2.5 ">
-                  <SignInButton /> <span aria-hidden="true">&rarr;</span>
-                </p>
-              </SignedOut>
+            <p className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 rounded-md hover:bg-amber-400 dark:hover:bg-amber-700 px-3.5 py-2.5 ">
+              <SignInButton /> <span aria-hidden="true">&rarr;</span>
+            </p>
+          </SignedOut>
           <SignedIn>
             <Link
               href="/order"
@@ -48,22 +46,8 @@ export default function Welcome() {
           <p className="mt-4 sm:mt-6 text-lg sm:text-xl leading-7">
             <span className="outline-white">We are a non-profit campus eats open to faculty, staff and alumni of Mount Allison University, located in the heart of campus.</span>
           </p>
-
-          {/* Sign-up area */}
-          <div className="mt-4 sm:mt-8 flex flex-col sm:flex-row items-center gap-4">
-            <SignedOut>
-              <div className="relative rounded-full px-3 py-1 text-sm sm:text-lg leading-6 text-red-700 dark:text-red-400 bg-white dark:bg-gray-900 ring-1 ring-red-700/10 hover:ring-red-700/20">
-                <span className="outline-black">Want to order some delicious meals?{" "}</span>
-                <span className="whitespace-nowrap font-semibold text-red-700 hover:text-red-600">
-                  <span className="absolute inset-0" aria-hidden="true" />
-                  <SignUpButton /> <span aria-hidden="true">&rarr;</span>
-                </span>
-              </div>
-            </SignedOut>
-          </div>
         </div>
       </div>
     </div>
   );
 }
-
