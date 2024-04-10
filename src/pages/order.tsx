@@ -120,9 +120,6 @@ const createOrder = async (order: any[]) => {
           <p className="text-gray-600 dark:text-gray-300">Menu of the day has not been established yet.</p>
         )}
       </div>
-      {/* {isCartModalOpen && (
-        <CartPage cart={cart} onClose={toggleCartModal} updateCart={updateCart} createOrder={createOrder} />
-      )} */}
       {isCartModalOpen && (
       <CartPage 
         cart={cart} 
